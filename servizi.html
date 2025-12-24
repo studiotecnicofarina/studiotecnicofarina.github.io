@@ -1,0 +1,104 @@
+<html>
+	<head>
+	<title>Modulo Richiesta Servizi</title>
+	
+	<style>
+		body {
+			/* Colore di sfondo: Cornsilk */
+			background-color: 	#fff8dc; 
+			font-family: Arial, sans-serif;
+		}
+        /* Stile semplice per evidenziare il messaggio di errore */
+        .error-message {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+	</style>
+	</head>
+	
+	<body>
+	<center>
+	<h2>Modulo Richiesta Servizi</h2>
+	<img src="2022-11-29.webp" alt="Immagine di riferimento">
+	
+	<form action="invia_email.php" method="POST" id="moduloServizi" onsubmit="return validateForm()">
+	
+	NOME<input type="text" name="nome" required><br>
+	<br>
+	
+	COGNOME<input type="text" name="cognome" required><br>
+	<br>
+	INDIRIZZO <input type="text" name="indirizzo_1" required><br> 
+	<br>
+	E_MAIL<input type="email" name="email" required><br> <br>
+	DATA DI NASCITA<input type="text" name="data_nascita" required><br>
+	<br>
+	NUMERO DI TELEFONO<input type="text" name="telefono" required><br>
+	<br>
+	<br> Servizio Richiesto<br>
+    
+    <div id="serviziCheckboxes">
+        <input type="checkbox" name="servizi[]" value="Progettazione e direzione lavori">Progettazione e direzione lavori.<br>
+        <input type="checkbox" name="servizi[]" value="Progettazione architettonica">Progettazione architettonica.<br>
+        <input type="checkbox" name="servizi[]" value="Rendering strutture">Rendering strutture<br>
+        <input type="checkbox" name="servizi[]" value="Redazione di pratiche catastali">Redazione di pratiche catastali.<br>
+        <input type="checkbox" name="servizi[]" value="Dichiarazioni di successione">Dichiarazioni di successione.<br>
+        <input type="checkbox" name="servizi[]" value="Redazione di perizie e stime">Redazione di perizie e stime<br>
+        <input type="checkbox" name="servizi[]" value="Redazione di tabelle millesimali">Redazione di tabelle millesimali.<br>
+        <input type="checkbox" name="servizi[]" value="Consulenze tecniche per atti">Consulenze tecniche per atti.<br>
+        <input type="checkbox" name="servizi[]" value="Consulenze tecniche generali">Consulenze tecniche<br>
+    </div>
+	<br>
+	<br><br>
+
+    <div id="validationError" class="error-message"></div>
+		
+	<input type="submit" value="INVIA MODULO">
+	<input type="reset" value="CANCELLA">
+	<a href="index.html">Torna alla Home</a>
+	</form>
+	</center>
+
+    <script>
+        function validateForm() {
+            const errorDiv = document.getElementById('validationError');
+            errorDiv.innerHTML = ''; // Pulisce gli errori precedenti
+
+            // 1. Verifica CHECKBOX (Servizi)
+            const checkboxes = document.querySelectorAll('#serviziCheckboxes input[type="checkbox"]');
+            let checkedService = false;
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    checkedService = true;
+                }
+            });
+
+            if (!checkedService) {
+                errorDiv.innerHTML = "⚠️ Per favore, seleziona almeno un Servizio Richiesto.";
+                return false; 
+            }
+            
+            
+            const radios = document.querySelectorAll('#tutorRadioButtons input[type="radio"]');
+            let checkedTutor = false;
+            radios.forEach(radio => {
+                if (radio.checked) {
+                    checkedTutor = true;
+                }
+            });
+
+            if (!checkedTutor) {
+                if (errorDiv.innerHTML) {
+                    errorDiv.innerHTML += "<br>";
+                }
+                errorDiv.innerHTML += "⚠️ Per favore, rispondi alla domanda 'TUTOR ONLINE'.";
+                return false; 
+            }
+            
+            // 
+            return true;
+        }
+    </script>
+	</body>
+</html>

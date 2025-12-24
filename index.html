@@ -1,0 +1,192 @@
+<html>
+<head>
+    <title>Studio Tecnico Farina</title>
+
+    <style>
+        /* Stili per l'Animazione e lo Sfondo (Mantenuti) */
+        @keyframes imageFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        body {
+            background-color: #f0f0f0;
+            min-height: 100vh;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url("2022-11-29.webp") no-repeat center center / cover;
+            opacity: 0;
+            animation: imageFadeIn 2s ease-out 0.5s forwards; 
+        }
+
+        /* Stili per la Navbar (Mantenuti) */
+        .navbar {
+            width: 100%;
+            background-color: #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex; 
+            justify-content: center;
+        }
+
+        .navbar li {
+            padding: 15px 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #ffd700;
+        }
+
+        h1 {
+            text-align: center;
+            padding-top: 50px;
+            color: #333;
+        }
+        
+        /* --- NUOVI STILI PER LA NOTIFICA (Popup LATERALE) --- */
+        
+        #holidayPopup {
+            position: fixed; /* Fissa la posizione */
+            top: 50px; /* Distanza dall'alto */
+            right: -350px; /* Inizialmente nascosto fuori dallo schermo a destra */
+            width: 300px; /* Dimensione fissa */
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            border-left: 5px solid #c0392b; /* Linea rossa per un tocco festivo */
+            transition: right 0.8s ease-out; /* Animazione per l'entrata e l'uscita */
+        }
+        
+        /* Classe usata da JavaScript per far apparire il popup */
+        #holidayPopup.show {
+            right: 20px; /* Posizione visibile (distanza dal lato destro) */
+        }
+        
+        /* Icona (Babbo Natale) */
+        .popup-icon {
+            font-size: 2em; 
+            color: #c0392b;
+            margin-right: 10px;
+        }
+
+        .popup-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .popup-content h2 {
+            margin: 0;
+            font-size: 1.1em;
+            color: #333; 
+        }
+        
+        .popup-content p {
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        
+        /* Bottone di chiusura opzionale (lo lasciamo in caso l'utente voglia chiudere prima) */
+        .close-btn {
+            float: right;
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            color: #aaa;
+            line-height: 1;
+        }
+        
+        .close-btn:hover {
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+
+    
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">HOME PAGE</a></li>
+                <li><a href="studio.html">LO STUDIO</a></li>
+                <li><a href="servizi.html">SERVIZI</a></li>
+                <li><a href="contatti.html">CONTATTI</a></li>
+                <li><a href="recensioni.html">RECENSIONI</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Benvenuto!</h1>
+    
+    <div id="holidayPopup">
+        <button class="close-btn" onclick="closePopup()"></button>
+        <div class="popup-header">
+            
+        </div>
+        <div class="popup-content">
+            <p>Lo Studio Tecnico Farina augura a tutti un sereno periodo di festivita' e un felice anno nuovo.</p>
+            <p>A presto!</p>
+        </div>
+    </div>
+    <script>
+        // Funzione per mostrare il popup
+        function showPopup() {
+            const popup = document.getElementById('holidayPopup');
+            // Aggiunge la classe 'show' per attivare l'animazione CSS
+            popup.classList.add('show'); 
+            
+            // Imposta un timer per chiudere il popup dopo 5000 millisecondi (5 secondi)
+            setTimeout(function() {
+                closePopup();
+            }, 5000);
+        }
+        
+        // Funzione per nascondere il popup
+        function closePopup() {
+            const popup = document.getElementById('holidayPopup');
+            // Rimuove la classe 'show' per attivare l'animazione CSS inversa
+            popup.classList.remove('show');
+            
+            // Opzionale: Nasconde completamente il div dopo l'animazione
+            setTimeout(function() {
+                 // Potrebbe essere utile se non si vuole che occupi spazio logico
+                 // popup.style.display = 'none'; 
+            }, 1000); // 1000ms per attendere che l'animazione finisca
+        }
+
+        // Lancia il popup all'apertura della pagina
+        window.onload = showPopup;
+    </script>
+    
+</body>
+</html>
