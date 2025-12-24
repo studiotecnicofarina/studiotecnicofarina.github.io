@@ -61,44 +61,27 @@
 	</center>
 
     <script>
-        function validateForm() {
-            const errorDiv = document.getElementById('validationError');
-            errorDiv.innerHTML = ''; // Pulisce gli errori precedenti
+    function validateForm() {
+        const errorDiv = document.getElementById('validationError');
+        errorDiv.innerHTML = ''; // Pulisce gli errori precedenti
 
-            // 1. Verifica CHECKBOX (Servizi)
-            const checkboxes = document.querySelectorAll('#serviziCheckboxes input[type="checkbox"]');
-            let checkedService = false;
-            checkboxes.forEach(checkbox => {
-                if (checkbox.checked) {
-                    checkedService = true;
-                }
-            });
-
-            if (!checkedService) {
-                errorDiv.innerHTML = "⚠️ Per favore, seleziona almeno un Servizio Richiesto.";
-                return false; 
+        // 1. Verifica CHECKBOX (Servizi)
+        const checkboxes = document.querySelectorAll('#serviziCheckboxes input[type="checkbox"]');
+        let checkedService = false;
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                checkedService = true;
             }
-            
-            
-            const radios = document.querySelectorAll('#tutorRadioButtons input[type="radio"]');
-            let checkedTutor = false;
-            radios.forEach(radio => {
-                if (radio.checked) {
-                    checkedTutor = true;
-                }
-            });
+        });
 
-            if (!checkedTutor) {
-                if (errorDiv.innerHTML) {
-                    errorDiv.innerHTML += "<br>";
-                }
-                errorDiv.innerHTML += "⚠️ Per favore, rispondi alla domanda 'TUTOR ONLINE'.";
-                return false; 
-            }
-            
-            // 
-            return true;
+        if (!checkedService) {
+            errorDiv.innerHTML = "⚠️ Per favore, seleziona almeno un Servizio Richiesto.";
+            return false; 
         }
-    </script>
+
+        return true;
+    }
+</script>
+
 	</body>
 </html>
