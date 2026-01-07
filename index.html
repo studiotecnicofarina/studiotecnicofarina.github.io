@@ -151,47 +151,9 @@
 
     <h1>Benvenuto!</h1>
     
-    <div id="holidayPopup">
-        <button class="close-btn" onclick="closePopup()"></button>
-        <div class="popup-header">
-            
-        </div>
-        <div class="popup-content">
-            <p>Lo Studio Tecnico Farina augura a tutti un sereno periodo di festivita' e un felice anno nuovo.</p>
-            <p>A presto!</p>
-        </div>
-    </div>
-    <script>
-        // Funzione per mostrare il popup
-        function showPopup() {
-            const popup = document.getElementById('holidayPopup');
-            // Aggiunge la classe 'show' per attivare l'animazione CSS
-            popup.classList.add('show'); 
-            
-            // Imposta un timer per chiudere il popup dopo 5000 millisecondi (5 secondi)
-            setTimeout(function() {
-                closePopup();
-            }, 5000);
-        }
-        
-        // Funzione per nascondere il popup
-        function closePopup() {
-            const popup = document.getElementById('holidayPopup');
-            // Rimuove la classe 'show' per attivare l'animazione CSS inversa
-            popup.classList.remove('show');
-            
-            // Opzionale: Nasconde completamente il div dopo l'animazione
-            setTimeout(function() {
-                 // Potrebbe essere utile se non si vuole che occupi spazio logico
-                 // popup.style.display = 'none'; 
-            }, 1000); // 1000ms per attendere che l'animazione finisca
-        }
-
-        // Lancia il popup all'apertura della pagina
-        window.onload = showPopup;
-    </script>
     
 </body>
 
 </html>
+
 
