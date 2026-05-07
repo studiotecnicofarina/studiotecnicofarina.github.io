@@ -69,52 +69,27 @@
             color: #333;
         }
         
-        /* --- NUOVI STILI PER LA NOTIFICA (Popup LATERALE) --- */
+        
         
         #holidayPopup {
-            position: fixed; /* Fissa la posizione */
-            top: 50px; /* Distanza dall'alto */
-            right: -350px; /* Inizialmente nascosto fuori dallo schermo a destra */
-            width: 300px; /* Dimensione fissa */
+            position: fixed; 
+            top: 50px;
+            right: -350px; 
+            width: 300px; 
             padding: 20px;
             background: #ffffff;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             z-index: 1000;
-            border-left: 5px solid #c0392b; /* Linea rossa per un tocco festivo */
-            transition: right 0.8s ease-out; /* Animazione per l'entrata e l'uscita */
+            border-left: 5px solid #c0392b; 
+            transition: right 0.8s ease-out; 
         }
         
         /* Classe usata da JavaScript per far apparire il popup */
         #holidayPopup.show {
             right: 20px; /* Posizione visibile (distanza dal lato destro) */
         }
-        
-        /* Icona (Babbo Natale) */
-        .popup-icon {
-            font-size: 2em; 
-            color: #c0392b;
-            margin-right: 10px;
-        }
-
-        .popup-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        
-        .popup-content h2 {
-            margin: 0;
-            font-size: 1.1em;
-            color: #333; 
-        }
-        
-        .popup-content p {
-            font-size: 0.9em;
-            margin-bottom: 5px;
-        }
-        
-        /* Bottone di chiusura opzionale (lo lasciamo in caso l'utente voglia chiudere prima) */
+    
         .close-btn {
             float: right;
             background: none;
