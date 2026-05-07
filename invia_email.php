@@ -1,13 +1,8 @@
 <?php
-// =================================================================
-// 1. CONFIGURAZIONE
-// =================================================================
 $destinatario = "studiotecnicofarina@outlook.it"; 
 $oggetto = "Nuova Richiesta Modulo Servizi";
 
-// =================================================================
-// 2. FUNZIONE DI SANIFICAZIONE
-// =================================================================
+
 function pulisci_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -15,9 +10,7 @@ function pulisci_input($data) {
     return $data;
 }
 
-// =================================================================
-// 3. RACCOLTA DATI (Uso dell'operatore null coalescing ?? per pulizia)
-// =================================================================
+
 $nome         = pulisci_input($_POST['nome'] ?? 'N/A');
 $cognome      = pulisci_input($_POST['cognome'] ?? 'N/A');
 $email        = pulisci_input($_POST['email'] ?? 'N/A');
@@ -33,9 +26,8 @@ if (isset($_POST['servizi']) && is_array($_POST['servizi'])) {
     $servizi_richiesti = "Nessun servizio selezionato.";
 }
 
-// =================================================================
-// 4. COSTRUZIONE MESSAGGIO
-// =================================================================
+
+
 $corpo_messaggio = "Hai ricevuto una nuova richiesta dal sito:\n\n";
 $corpo_messaggio .= "Dati Utente:\n";
 $corpo_messaggio .= "---------------------------\n";
@@ -48,19 +40,14 @@ $corpo_messaggio .= "Servizi richiesti:$servizi_richiesti\n\n";
 $corpo_messaggio .= "---------------------------\n";
 $corpo_messaggio .= "Inviato il: " . date("d/m/Y alle H:i");
 
-// =================================================================
-// 5. INTESTAZIONI (HEADERS)
-// =================================================================
+
 $headers = "From: Modulo Sito <studiotecnicofarina@outlook.it>\r\n";
 $headers .= "Reply-To: $email\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-// =================================================================
-// 6. INVIO E REINDIRIZZAMENTO
-// =================================================================
+
 if (mail($destinatario, $oggetto, $corpo_messaggio, $headers)) {
-    // Se l'invio ha successo, prova a rimandare a grazie.html 
-    // Se grazie.html non esiste ancora, mostrerà il messaggio testuale sotto.
+   
     if (file_exists('grazie.html')) {
         header("Location: grazie.html");
         exit;
